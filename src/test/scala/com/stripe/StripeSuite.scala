@@ -37,49 +37,6 @@ trait StripeSuite extends Matchers {
   )
 }
 
-class ChargeSuite extends FunSuite with StripeSuite {
-  test("Charges can be created") {
-    val charge = Charge.create(Map("amount" -> 100, "currency" -> "usd", "card" -> DefaultCardMap))
-    charge.refunded should be (false)
-  }
-
-  test("Charges can be retrieved individually") {
-    val createdCharge = Charge.create(DefaultChargeMap)
-    val retrievedCharge = Charge.retrieve(createdCharge.id)
-    createdCharge.created should equal (retrievedCharge.created)
-  }
-
-  test("Charges can be refunded") {
-    val charge = Charge.create(DefaultChargeMap)
-    val refundedCharge = charge.refund()
-    refundedCharge.refunded should equal (true)
-  }
-
-  test("Charges can be listed") {
-    val charge = Charge.create(DefaultChargeMap)
-    val charges = Charge.all().data
-    charges.head.isInstanceOf[Charge] should be (true)
-  }
-
-  test("Invalid card raises CardException") {
-    val e = intercept[CardException] {
-      Charge.create(Map(
-        "amount" -> 100,
-        "currency" -> "usd",
-        "card" -> Map("number" -> "4242424242424241", "exp_month" -> 3, "exp_year" -> 2015)
-      ))
-    }
-    e.param.get should equal ("number")
-  }
-
-  test("CVC, address and zip checks should pass in testmode") {
-    val charge = Charge.create(DefaultChargeMap)
-    charge.card.cvcCheck.get should equal ("pass")
-    charge.card.addressLine1Check.get should equal ("pass")
-    charge.card.addressZipCheck.get should equal ("pass")
-  }
-}
-
 class CustomerSuite extends FunSuite with StripeSuite {
   test("Customers can be created") {
     val customer = Customer.create(DefaultCustomerMap + ("description" -> "Test Description"))
