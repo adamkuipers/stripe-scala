@@ -4,7 +4,7 @@ version := io.Source.fromFile("VERSION").mkString.trim
 
 organization := "com.stripe"
 
-scalaVersion := "2.11.4"
+scalaVersion := "2.11.6"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 
@@ -50,4 +50,3 @@ pomExtra := (
     </developer>
   </developers>
 )
-
