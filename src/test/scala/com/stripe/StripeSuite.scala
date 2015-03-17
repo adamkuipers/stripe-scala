@@ -1,10 +1,10 @@
 package com.stripe
 
 import org.scalatest.FunSuite
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 import java.util.UUID
 
-trait StripeSuite extends ShouldMatchers {
+trait StripeSuite extends Matchers {
   //set the stripe API key
   apiKey = "tGN0bIwXnHdwOa85VABjPdSn8nWY7G7I"
 
