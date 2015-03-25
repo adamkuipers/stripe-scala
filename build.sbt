@@ -2,6 +2,7 @@ name := "stripe-scala"
 scalaVersion := "2.11.6"
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 resolvers += "paulp/maven" at "https://dl.bintray.com/paulp/maven"
+scalacOptions ++= Seq("-Xlint", "-deprecation", "-Xfatal-warnings")
 
 libraryDependencies ++= Seq(
   "org.apache.httpcomponents" % "httpclient" % "[4.1, 4.2)",
