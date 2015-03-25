@@ -4,26 +4,11 @@ import org.expecty.Expecty
 import utest._
 import utest.ExecutionContext.RunNow
 
-import java.util.UUID
-
 object ChargeTests extends TestSuite {
-
-  apiKey = sys.env("API_KEY")
-  val expect = new Expecty()
+  import fixtures._
 
   val tests = TestSuite {
-    val DefaultCardMap = Map(
-      "name" -> "Scala User",
-      "cvc" -> "100",
-      "address_line1" -> "12 Main Street",
-      "address_line2" -> "Palo Alto",
-      "address_zip" -> "94105",
-      "address_country" -> "USA",
-      "number" -> "4242424242424242",
-      "exp_month" -> 3,
-      "exp_year" -> 2015)
-
-    val DefaultChargeMap = Map("amount" -> 100, "currency" -> "usd", "card" -> DefaultCardMap)
+    val expect = new Expecty()
 
     "Charges can be created" - {
       val charge = Charge.create(
