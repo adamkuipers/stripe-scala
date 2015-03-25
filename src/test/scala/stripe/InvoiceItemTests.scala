@@ -1,4 +1,4 @@
-package com.stripe
+package stripe
 
 import org.expecty.Expecty
 import utest._

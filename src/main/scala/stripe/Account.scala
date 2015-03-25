@@ -1,4 +1,4 @@
-package com.stripe
+package stripe
 
 case class Account(
   id: String,

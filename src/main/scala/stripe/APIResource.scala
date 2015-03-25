@@ -1,4 +1,4 @@
-package com.stripe
+package stripe
 
 import java.net.URLEncoder
 import scala.collection.JavaConversions._
